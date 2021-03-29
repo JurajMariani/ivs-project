@@ -218,6 +218,7 @@ void Div_test()
 	a = 10;
 	b = 0;
 	irl_result;
+	bool err_flag = false;
 	try
 	{
 	irl_result = div(a, b);
@@ -317,50 +318,50 @@ void Fact_test()
 	double expected_result = 25;
 	double x = 5;
 	double n = 2;
-	double irl_result = fact(x,n);
+	double irl_result = power(x,n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = 4096;
 	x = 8;
 	n = 4;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = -8;
 	x =-2;
 	n = 3;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = -1;
 	x = -1;
 	n = 1;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	//float
 	expected_result = 2.25;
 	x = 1.5;
 	n = 2;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = 244.140625;
 	x = 2.5;
 	n = 6;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = 9.313225746e+20;
 	x = 5;
 	n = 30;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = -421.875;
 	x = -7.5;
 	n = 3;
-	irl_result = fact(x, n);
+	irl_result = power(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'power( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 }
@@ -376,25 +377,26 @@ void Nqrt_test()
 	expected_result = 2;
 	x = 8;
 	n = 3;
-	irl_result = fact(x, n);
+	irl_result = nqrt(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'nqrt( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	expected_result = 0;
 	x = 0;
 	n = 3;
-	irl_result = fact(x, n);
+	irl_result = nqrt(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'nqrt( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 
 	//float
 	expected_result = 2.3;
 	x = 3;
 	n = 12.167;
-	irl_result = fact(x, n);
+	irl_result = nqrt(x, n);
 	if (expected_result != irl_result) std::cout << "ERROR: (function 'nqrt( " << a << ", " << b << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl;
 	
 	//error ked deli x je menej nez nula
 	x = -2;
 	n = 2;
+	bool err_flag = false;
 	try
 	{
 		irl_result = nqrt(x, n);
@@ -431,6 +433,7 @@ void Log_test()
 
 	//error ked x je mensie alebo rovne 0
 	x = -2;
+	bool err_flag = false;
 	try
 	{
 		double irl_result = log(x);
@@ -440,7 +443,7 @@ void Log_test()
 		err_flag = true;
 	}
 	if (err_flag != true)
-		std::cout << "ERROR: (function 'log( " << x << ")') | x <= 0 " << std::end1;
+		std::cout << "ERROR: (function 'log( " << x << ")') | x <= 0 " << std::endl;
 }
 int main()
 {
