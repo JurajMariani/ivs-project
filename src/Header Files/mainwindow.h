@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "hfunc.lib"
 //Interface lib
 
 QT_BEGIN_NAMESPACE

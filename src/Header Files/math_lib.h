@@ -7,19 +7,35 @@
 //
 
 /**/
+#pragma once
 
-double add (double x, double y);
+#ifndef QMATHS_H_
+#define QMATHS_H_
 
-double sub (double x, double y);
+class Quick_Maths
+{
+public:
 
-double mul (double x, double y);
+    double add (double x, double y);
 
-double div (double x, double y);
+    double sub (double x, double y);
 
-double fact (double x);
+    double mul (double x, double y);
 
-double power (double x, unsigned int n);
+    double div (double x, double y);
 
-double nqrt (double x, unsigned int n);
+    double fact (int x);
 
-double log (double x);
+    double power (double x, int n);
+
+    double nqrt (double x, int n);
+
+    double log (double x);
+
+protected:
+    double abs (double x);
+
+};
+#endif
+
+/*EndComment*/
