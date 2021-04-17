@@ -1,8 +1,8 @@
 CXX = g++
 
-HEADER := ../Header\ Files/math_lib.h
-SRC := ../Source\ Files/math_lib.cpp
-INC := -I../Header\ Files
+HEADER := ../../Header\ Files/math_lib.h
+SRC := ../../Source\ Files/math_lib.cpp
+INC := -I../../Header\ Files
 
 
 all: math_test clean
