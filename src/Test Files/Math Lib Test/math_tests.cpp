@@ -518,36 +518,48 @@ void log_test()
 	//int
 	double expected_result = 2;
 	double x = 100;
-	double irl_result = log(x);
+	double irl_result = log(10,x);
 
 	if (expected_result != irl_result) {std::cout << "\tERROR: (function 'log( " << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
 
 	expected_result = 1;
 	x = 10;
-	irl_result = log(x);
+	irl_result = log(10,x);
 	if (expected_result != irl_result) {std::cout << "\tERROR: (function 'log( " << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
 
 	expected_result = 0;
 	x = 1;
-	irl_result = log(x);
+	irl_result = log(10,x);
 	if (expected_result != irl_result) {std::cout << "\tERROR: (function 'log( " << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
 
 	expected_result = 15;
 	x = 1e+15;
-	irl_result = log(x);
+	irl_result = log(10,x);
 	if (expected_result != irl_result) {std::cout << "\tERROR: (function 'log( " << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
 	
 	expected_result = -1;
 	x = 0.1;
-	irl_result = log(x);
+	irl_result = log(10,x);
 	if ((expected_result < irl_result - EPS) && (expected_result > irl_result + EPS)) {std::cout << "\tERROR: (function 'log(" << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
+
+	expected_result = 2;
+        x = 25;
+        irl_result = log(5,x);
+        if ((expected_result < irl_result - EPS) && (expected_result > irl_result + EPS)) {std::cout << "\tERROR: (function 'log(" << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
+
+	std::cout << "zaklad e: " << e << std::endl;
+
+	expected_result = 2.1972245773362193827904904738450;
+        x = 9;
+        irl_result = log( e , x );
+        if ((expected_result < irl_result - EPS) && (expected_result > irl_result + EPS)) {std::cout << "\tERROR: (function 'log(" << x << ")') | EXPECTED OUTPUT = " << expected_result << " | ACTUAL RESULT = " << irl_result << std::endl; count++;}
 
 	//error ked x je mensie alebo rovne 0
 	x = -2;
 	bool err_flag = false;
 	try
 	{
-		double irl_result = log(x);
+		double irl_result = log(10,x);
 	}
 	catch (std::runtime_error&)
 	{

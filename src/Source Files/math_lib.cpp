@@ -114,7 +114,7 @@ double nqrt (double x, double n)
 
 }
 
-double log_gt_one (double x)
+double log_gt_one (double base, double x)
 {
 
 	unsigned short dec = 0;
@@ -124,19 +124,19 @@ double log_gt_one (double x)
 	while ( dec < 16 )
 	{
 		n = 0;
-		while( ! ( ( power(BASE,n) <= x ) && ( power(BASE,n+1) > x ) ) )
+		while( ! ( ( power(base,n) <= x ) && ( power(base,n+1) > x ) ) )
 			n += 1;
 
-		x = x / power( BASE, n );
-		x = power( x, (long long)power(BASE, n) );
-		out = out + ((double)n * power(BASE,(long long)dec));
+		x = x / power( base, n );
+		x = power( x, (long long)power(base, n) );
+		out = out + ((double)n * power(base,(long long)dec));
 		dec += 1;
 	}
 
 	return ( out );
 }
 
-double log_lt_one(double x)
+double ln(double x)
 {
 
 	long double diff = 1;
@@ -154,24 +154,25 @@ double log_lt_one(double x)
 
 	}
 
-	out = out / ln10;
-
 	return ( out );
 	
 }
 
-double log (double x)
+double log (double base, double x)
 {
 
-	if ( x + EPS <= 0 )
-		throw std::runtime_error("The logarithmised value has to be a positive non-zero value");
+	//if (( base < (long)base - EPS ) || ( base > (long)base + EPS ))
+	//	throw std::runtime_error("The BASE has to be a positive integer value");
+	if (( x + EPS <= 0 ) || ( base + EPS <= 0))
+		throw std::runtime_error("The logarithmised value or the base has to be a positive non-zero value");
 
+	if (( base >= e + EPS ) && ( base <= e + EPS ))
+		return ( ln( x ) );
 	if ( x > 1 + EPS )
-		return ( log_gt_one( x ) );
-	if (( x >= 1 - EPS ) && ( x <= 1 + EPS ))
-		return ( 0.0 );
+		return ( log_gt_one( base, x ) );
 	if ( x < 1 - EPS )
-		return ( log_lt_one( x ) );
+		return ( ln( x ) / ln( base ) );
+	return ( 0.00 );
 }
 
 double abs (long double x)
