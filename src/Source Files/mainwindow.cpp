@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->button_root->setText(QStringLiteral("n\u221A"));
+    ui->button_pi->setText(QStringLiteral("\u03C0"));
 
     connect(ui->button_0, &QPushButton::clicked ,this,&MainWindow::add_0);
     connect(ui->button_1, &QPushButton::clicked ,this,&MainWindow::add_1);
@@ -26,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->button_9, &QPushButton::clicked ,this,&MainWindow::add_9);
     connect(ui->button_ans, &QPushButton::clicked ,this,&MainWindow::add_ans);
     connect(ui->button_dot, &QPushButton::clicked ,this,&MainWindow::add_dot);
+    connect(ui->button_pi, &QPushButton::clicked ,this,&MainWindow::add_pi);
+    connect(ui->button_e, &QPushButton::clicked ,this,&MainWindow::add_e);
 
 
     connect(ui->button_left, &QPushButton::clicked ,this,&MainWindow::move_left);
@@ -40,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->button_power, &QPushButton::clicked ,this,&MainWindow::add_power);
     connect(ui->button_root, &QPushButton::clicked ,this,&MainWindow::add_root);
-    connect(ui->button_ln, &QPushButton::clicked ,this,&MainWindow::add_ln);
+    connect(ui->button_log, &QPushButton::clicked ,this,&MainWindow::add_log);
 
     connect(ui->button_equals, &QPushButton::clicked ,this,&MainWindow::solve);
 
@@ -84,37 +87,37 @@ void MainWindow::ac()
 
 void MainWindow::add_plus()
 {
-    ui->in_out_window->insert("+");
+    ui->in_out_window->insert(" + ");
 }
 
 void MainWindow::add_minus()
 {
-    ui->in_out_window->insert("-");
+    ui->in_out_window->insert(" - ");
 }
 
 void MainWindow::add_mul()
 {
-    ui->in_out_window->insert("*");
+    ui->in_out_window->insert(" * ");
 }
 
 void MainWindow::add_div()
 {
-    ui->in_out_window->insert("/");
+    ui->in_out_window->insert(" / ");
 }
 
 void MainWindow::add_power()
 {
-    ui->in_out_window->insert("^");
+    ui->in_out_window->insert(" ^ ");
 }
 
 void MainWindow::add_root()
 {
-    ui->in_out_window->insert(QStringLiteral("\u221A"));
+    ui->in_out_window->insert(QStringLiteral(" \u221A "));
 }
 
-void MainWindow::add_ln()
+void MainWindow::add_log()
 {
-    ui->in_out_window->insert("ln ");
+    ui->in_out_window->insert(" log ");
 }
 
 void MainWindow::add_0()
@@ -169,11 +172,21 @@ void MainWindow::add_9()
 
 void MainWindow::add_ans()
 {
-    ui->in_out_window->insert("ans ");
+    ui->in_out_window->insert("ans");
 }
 
 void MainWindow::add_dot()
 {
     ui->in_out_window->insert(".");
+}
+
+void MainWindow::add_pi()
+{
+    ui->in_out_window->insert("pi");
+}
+
+void MainWindow::add_e()
+{
+    ui->in_out_window->insert("e");
 }
 

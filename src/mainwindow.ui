@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>398</height>
+    <height>410</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -161,7 +161,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>350</y>
       <width>280</width>
       <height>50</height>
      </rect>
@@ -174,7 +174,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>210</y>
+      <y>225</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -187,7 +187,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>210</y>
+      <y>225</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -200,7 +200,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>260</y>
+      <y>275</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -213,7 +213,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>260</y>
+      <y>275</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -235,10 +235,10 @@
      <string>^</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_ln">
+   <widget class="QPushButton" name="button_log">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>110</x>
       <y>80</y>
       <width>50</width>
       <height>50</height>
@@ -264,7 +264,7 @@
    <widget class="QPushButton" name="button_root">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>60</x>
       <y>80</y>
       <width>50</width>
       <height>50</height>
@@ -317,7 +317,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>140</y>
+      <y>80</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -330,13 +330,39 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>140</y>
+      <y>80</y>
       <width>50</width>
       <height>50</height>
      </rect>
     </property>
     <property name="text">
      <string>AC</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_pi">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>155</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0227</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_e">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>155</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>e</string>
     </property>
    </widget>
   </widget>

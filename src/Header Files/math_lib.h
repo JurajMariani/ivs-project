@@ -31,7 +31,7 @@ double nqrt (double x, double n);
 
 double log_gt_one (double base, double x);
 
-double log_lt_one (double base, double x);
+double ln (double x);
 
 double log (double base, double x);
 

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "hfunc.lib"
+
 //Interface lib
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +29,8 @@ public slots:
     void add_8();
     void add_9();
     void add_dot();
+    void add_pi();
+    void add_e();
 
     void add_ans();
 
@@ -39,7 +41,7 @@ public slots:
 
     void add_power();
     void add_root();
-    void add_ln();
+    void add_log();
 
     void move_left();
     void move_right();
