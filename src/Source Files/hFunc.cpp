@@ -47,7 +47,7 @@ bool Higher_Func::IsNumber(string gElement){
 
 //Checks if string is a number
 bool Higher_Func::IsOperand(string gElement){
-    regex sign ("(\\+)|(\\-)|(\\*)|(\\/)|(\\^)|(\u221A)|(log)|(!)");
+    regex sign ("(\\+)|(\\-)|(\\*)|(\\/)|(\\^)|(√)|(log)|(!)");
     return regex_match(gElement,sign);
 }
 
@@ -70,11 +70,11 @@ double Higher_Func::GetNumber(string number){
 
 //inputs operation and returns its importance in equation
 int Higher_Func::AssignImportance(string input){
-    if(input.compare("log")==0 || input.compare("\u221A")==0){
+    if(input.compare("log")==0 || input.compare("√")==0||input.compare("!")==0||input.compare("^")==0){
         return 3;
     }
     else
-    if(input.compare("*")==0 || input.compare("/")==0 || input.compare("^")==0 ){
+    if(input.compare("*")==0 || input.compare("/")==0){
         return 2;
     }
     else{
@@ -113,21 +113,48 @@ list<Higher_Func::element> Higher_Func::CreateOperationList(vector<string> eleme
 
 //Recognizes and performs single operation,returns result
 double Higher_Func::DoOperation(string operation,double operandA, double operandB){
+    double result=0.0;
+    //cout<<"gothere"<<endl;
+    try{
     if (operation.compare("+")==0)
-        return add(operandA,operandB);
+        result= add(operandA,operandB);
     if(operation.compare("-")==0)
-        return sub(operandA,operandB);
+        result= sub(operandA,operandB);
     if(operation.compare("*")==0)
-        return mul(operandA,operandB);
+        result= mul(operandA,operandB);
     if (operation.compare("/")==0)
-        return div(operandA,operandB);
+        result= div(operandA,operandB);
     if (operation.compare("^")==0)
-        return power(operandA,operandB);
-    if (operation.compare("\u221a")==0)
-        return nqrt(operandA,operandB);
+        result= power(operandA,operandB);
+    if (operation.compare("√")==0)
+        result= nqrt(operandB,operandA);
     if (operation.compare("log")==0)
-        return log(operandA,operandB);
-    return 0.0;
+        result= log(operandA,operandB);
+    if (operation.compare("!")==0)
+        result= fact(operandA);
+    }
+    catch(runtime_error& error){
+        throw runtime_error(error.what());
+    }
+    return result;
+}
+
+//Does the format thingy
+string FormatString(string input){
+    regex dot (".");
+    int tearC = 0;
+    for (int i = (input.size()-1);i>=0;i--){
+        if(input.at(i)=='.'){
+            tearC++;
+            break;
+        }
+        if(input.at(i)!='0'){
+            break;
+        }
+        tearC++;
+    }
+    input.resize(input.size()-tearC);
+    return input;
 }
 
 //Here is where magic happens...want some magic :P
@@ -182,15 +209,42 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
     for (int power = 3; power > 0; power-=1){
         for (i_operation = listOfElements.begin(); i_operation != listOfElements.end();i_operation++){
             if(i_operation->power==power){
-                cout<<"operation "<<i_operation->str<<endl;
+                //Pomocny Vypis
+                //cout<<"operation "<<i_operation->str<<endl;
+                /*
                 list<element>::iterator it = listOfElements.begin();
                 for(int i = 0; i < listOfElements.size();i++){
                     cout<<"Element "<<i<<" "<<it->str<<" power "<<it->power<<endl;
                     advance(it,1);
-                }           
+                } 
+                */          
                 operation = i_operation->str;
                 bool errFlag=1;
                 bool makeFlag=0;
+                if(operation.compare("!")==0){
+                    if(i_operation==listOfElements.begin()){
+                        errFlag=0;
+                    }else{
+                        i_operand=i_operation;
+                        i_operand--;
+                        if(IsOperand(i_operand->str)){
+                            errFlag=0;
+                        }
+                    }
+                    if(errFlag==0){
+                        throw runtime_error("operation " + i_operation->str + " has an invalid operands");
+                    }
+                    operandA=GetNumber(i_operand->str);
+                    try{
+                        i_operand->str=to_string(DoOperation(operation,operandA,0.0));
+                    }
+                    catch (runtime_error& error){
+                        throw runtime_error(error.what());
+                    }
+                    i_operation=listOfElements.erase(i_operation);
+                    i_operation=i_operand;
+                    continue;
+                }else
                 if (i_operation==listOfElements.begin()){
                     errFlag=0;
                 }else{
@@ -204,13 +258,13 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
                         operandA=10.0;
                         makeFlag=1;
                     }else
-                    if (i_operation->str.compare("\u221A")==0){
+                    if (i_operation->str.compare("√")==0){
                         operandA=2.0;
                         makeFlag=1;
                     }else
                         throw runtime_error("operation " + i_operation->str + " has an invalid operands");
                 }else{
-                    operandA=stod(i_operand->str);
+                    operandA=GetNumber(i_operand->str);
                 }
                 errFlag=1;
                 if(i_operation==listOfElements.end()){
@@ -224,32 +278,45 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
                 }
                 if(errFlag==0)
                     throw runtime_error("operation " + i_operation->str + " has an invalid operand");
-                operandB=stod(i_operand->str);
-                i_operand->str=to_string(DoOperation(operation,operandA,operandB));
+                operandB=GetNumber(i_operand->str);
+                try{
+                    i_operand->str=to_string(DoOperation(operation,operandA,operandB));
+                    //cout<<operation<<" results in "<<i_operand->str<<endl;
+                }
+                catch (runtime_error& error){
+                    throw runtime_error(error.what());
+                }
                 i_operand++;
                 if(makeFlag==0){
                     i_operation=prev(i_operation);
                     i_operation=listOfElements.erase(i_operation);
                 }
                 i_operation=listOfElements.erase(i_operation);
-                //i_operation=i_operand;
-            }//else{
-                //i_operation++;
-            //}
+            }
         }
     }
     //pomocny vypis
+    /*
     list<element>::iterator it = listOfElements.begin();
     for(int i = 0; i < listOfElements.size();i++){
         cout<<"Element "<<i<<" "<<it->str<<" power "<<it->power<<endl;
         advance(it,1);
     }
+    */
+    
     if(listOfElements.size()==1){
         i_operand=listOfElements.begin();
-        return i_operand->str;
+        ans=GetNumber(i_operand->str);
+        if(i_operand->str.compare("pi")==0){
+            return to_string(pi);
+        }
+        if(i_operand->str.compare("e")==0){
+            return to_string(e);
+        }
+        return FormatString(i_operand->str);
     }
     else
-        return "error";
+        return "multiple things remain";
 }
 
 string Higher_Func::solve (string input){
@@ -265,9 +332,10 @@ string Higher_Func::solve (string input){
     try{
         result=MainIterationCycle(workList);
     }
-    catch (string error){
-        return error;
+    catch (runtime_error& error){
+        result =  error.what();
     }
+
     return result;
 }
 

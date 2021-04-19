@@ -176,10 +176,10 @@ void hfunc_test()
 			failed_test++;
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
-
+	
 	test_numb++;
 	test_string = "2.85 - 0.85 * 55 / 11 + 0.1";
-	expect_output = "10.1";
+	expect_output = "-1.3";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
 		{
@@ -188,7 +188,7 @@ void hfunc_test()
 		}
 
 	test_numb++;
-	test_string = "-5555 * 22 / 100 -55.832 + 1543 / 2";
+	test_string = "-5555 * 22 / 100 - 55.832 + 1543 / 2";
 	expect_output = "-506.432";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
@@ -229,7 +229,7 @@ void hfunc_test()
 
 	test_numb++;
 	test_string = "3 √ 64 - 28 * -2";
-	expect_output = "48";
+	expect_output = "60";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
 		{
@@ -257,6 +257,8 @@ void hfunc_test()
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
 
+	//Toto ma fungovat?
+	//Lebo Juro to aktivne blokuje
 	test_numb++;
 	test_string = "2 ^ -3";
 	expect_output = "0.125";
@@ -266,7 +268,7 @@ void hfunc_test()
 			failed_test++;
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
-	
+
 	test_numb++;
 	test_string = "5 !";
 	expect_output = "120";
@@ -276,10 +278,10 @@ void hfunc_test()
 			failed_test++;
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
-
+	//changes
 	test_numb++;
 	test_string = "4 ! * 10 / 24 + 12 ^ 2 * 82";
-	expect_output = "12628";
+	expect_output = "11818";
 	real_output = func.solve(test_string);
 	if (real_output != expect_output) 
 		{
@@ -296,7 +298,8 @@ void hfunc_test()
 			failed_test++;
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
-	
+
+	//toto zaokruhluje tebe
 	test_numb++;
 	test_string = "852 * 5517 ^ 2 / 2 √ 1000000 ";
 	expect_output = "25932570.23";
@@ -306,10 +309,10 @@ void hfunc_test()
 			failed_test++;
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
-	
+	//changes
 	test_numb++;
-	test_string = "-12 + 54 -20 * 44 / 25 + log 10 - log 1 + 5 ! - 22 ^ 2 * 4 √ 16";
-	expect_output = "-831.2";
+	test_string = "-12 + 54 - 20 * 44 / 25 + log 10 - log 1 + 5 ! - 22 ^ 2 * 4 √ 16";
+	expect_output = "-840.2";
 	real_output = func.solve(test_string);
 	if (real_output != expect_output) 
 		{
@@ -317,9 +320,10 @@ void hfunc_test()
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
 
+	//changes
 	test_numb++;
 	test_string = "ans * -2 / 10 - 0.24 + ans ^ 2 ";//ako robi -2 ^ 2 - 2 ^ 2 ci to da -4 alebo aj zatvorky ...???
-	expect_output = "0";
+	expect_output = "706103.84";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
 		{
