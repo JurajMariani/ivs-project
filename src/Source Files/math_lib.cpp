@@ -105,7 +105,7 @@ double nqrt (double x, double n)
 	{
 	
 		x_i = ( ( ((long)n - 1.0) * x_prev ) + ( x / power(x_prev, (long)n-1) ) ) / n ;
-		diff = abs(x_i - x_prev);
+		diff = abs_v(x_i - x_prev);
 		x_prev = x_i;
 	
 	}
@@ -150,7 +150,7 @@ double ln(double x)
 		out_prev = out;
 		out = out + (( power(-1,k+1) / k ) * power(x - 1, k));
 		k += 1;
-		diff = abs( out - out_prev );
+		diff = abs_v( out - out_prev );
 
 	}
 
@@ -166,7 +166,7 @@ double log (double base, double x)
 	if (( x + EPS <= 0 ) || ( base + EPS <= 0))
 		throw std::runtime_error("The logarithmised value or the base has to be a positive non-zero value");
 
-	if (( base >= e + EPS ) && ( base <= e + EPS ))
+	if (( base >= E + EPS ) && ( base <= E + EPS ))
 		return ( ln( x ) );
 	if ( x > 1 + EPS )
 		return ( log_gt_one( base, x ) );
@@ -175,7 +175,7 @@ double log (double base, double x)
 	return ( 0.00 );
 }
 
-double abs (long double x)
+double abs_v (long double x)
 {
 
 	if ( x < 0 )

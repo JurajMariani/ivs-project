@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "./ui_mainwindow.h"
+#include "../Header Files/mainwindow.h"
+#include "../ui_mainwindow.h"
 #include <QLineEdit>
 #include <QDebug>
 

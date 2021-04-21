@@ -35,10 +35,10 @@ if(ANDROID)
   )
 else()
   add_executable(testGi
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    ./Source\ Files/main.cpp
+    ./Source\ Files/mainwindow.cpp
+    ./Header\ Files/mainwindow.h
+    ./mainwindow.ui
   )
 endif()
 

@@ -12,8 +12,8 @@
 #define __MATH_LIB_H__
 
 #define EPS 1e-16
-#define pi 3.14159265358979323846264338327950
-#define e 2.71828182845904523536028747135266
+#define PI 3.14159265358979323846264338327950
+#define E 2.71828182845904523536028747135266
 
 double add (double x, double y);
 
@@ -35,6 +35,6 @@ double ln (double x);
 
 double log (double base, double x);
 
-double abs (long double x);
+double abs_v (long double x);
 
 #endif
