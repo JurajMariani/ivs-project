@@ -5,7 +5,7 @@ SRC := ../../Source\ Files/math_lib.cpp
 INC := -I../../Header\ Files
 
 
-all: math_test clean
+all: math_test
 
 math_test: math_tests.o math_lib.o
 	$(CXX) math_tests.o math_lib.o -o $@

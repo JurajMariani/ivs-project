@@ -7,7 +7,7 @@ MATH_SRC := ../../Source\ Files/math_lib.cpp
 INC := -I../../Header\ Files
 
 
-all: hfunc_test clean
+all: hfunc_test
 
 hfunc_test: hfunc_tests.o hFunc.o math_lib.o
 	$(CXX) hfunc_tests.o hFunc.o math_lib.o -o $@

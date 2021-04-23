@@ -1,6 +1,10 @@
-all: build pack clean test doc profile run
+DESTDIR= $(HOME)
+INSLFAGS= -m 0755
+testGi=src/testGi
 
-.PHONY: build pack clean test doc run profile
+all: build test install
+
+.PHONY: build pack clean test doc run profile install
 
 
 profile:
@@ -27,10 +31,9 @@ test:
 
 test_vocal:
 	$(MAKE) -C ./src/Test\ Files/Math\ Lib\ Test/
-	./src/Test\ Files/Math\ Lib\ Test/math_test
+	./src/Test\ Files/Math\ Lib\ Test/math_test#clean 
 	rm ./src/Test\ Files/Math\ Lib\ Test/math_test
-	
-	$(MAKE) -C ./src/Test\ Files/HFunc\ Test/
+	/src/Test\ Files/Math\ Lib\ Test
 	./src/Test\ Files/HFunc\ Test/hfunc_test
 	rm ./src/Test\ Files/HFunc\ Test/hfunc_test
 
@@ -41,11 +44,15 @@ build:
 run:
 	./src/testGi #Temporary Name
 
+install: $(testGi)
+	mkdir -p $(DESTDIR)/usr/bin
+	install $(INSFLAGS) $(testGi) $(DESTDIR)/usr/bin/
+
 clean:
-	rm -r ./src/CMakeFiles
-	rm -r ./src/testGi_autogen
-	rm ./src/Makefile
-	rm ./src/cmake_install.cmake
-	rm ./src/CMakeCache.txt
+	rm -r ./src/CMakeFiles -f
+	rm -r ./src/testGi_autogen -f
+	rm ./src/Makefile -f
+	rm ./src/cmake_install.cmake -f
+	rm ./src/CMakeCache.txt -f
 
 
