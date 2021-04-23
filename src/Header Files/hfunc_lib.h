@@ -9,8 +9,8 @@
 /**/
 //#pragma once
 
-//#ifndef HFUNC_H_
-//define HFUNC_H_
+#ifndef __HFUNC_H__
+#define __HFUNC_H__
 
 //#include "math_lib.h"
 #include <string>
@@ -60,9 +60,13 @@ protected:
 
     double DoOperation(string operation,double operandA, double operandB); 
 
-    string MainIterationCycle(list<element> listOfElements);  
+    string MainIterationCycle(list<element> listOfElements);
+    /*
+    string Dot(string *input);
+    string ReDot(string *input);
+    */
 };
 
-//#endif
+#endif
 
 /*EndComment*/

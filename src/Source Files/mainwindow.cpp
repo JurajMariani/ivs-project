@@ -2,14 +2,15 @@
 #include "../ui_mainwindow.h"
 #include <QLineEdit>
 #include <QDebug>
-
-//Interface functions file
-//TODO add include our math libary here!
+#include <string>
+#include <iostream>
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
     ui->button_root->setText(QStringLiteral("n\u221A"));
@@ -44,26 +45,31 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->button_power, &QPushButton::clicked ,this,&MainWindow::add_power);
     connect(ui->button_root, &QPushButton::clicked ,this,&MainWindow::add_root);
     connect(ui->button_log, &QPushButton::clicked ,this,&MainWindow::add_log);
+    connect(ui->button_fact, &QPushButton::clicked ,this,&MainWindow::add_fact);
 
-    connect(ui->button_equals, &QPushButton::clicked ,this,&MainWindow::solve);
+    connect(ui->button_equals, &QPushButton::clicked ,this,&MainWindow::solveU);
+
+    connect(ui->button_help, &QPushButton::clicked ,this,&MainWindow::help_me);
 
 
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void MainWindow::solve()
+void MainWindow::solveU()
 {
     QString in=ui->in_out_window->text();
     std::string input=in.toStdString();
-    std::string output = "test";
-    //std::string output = mathlibsolve(input);
+    //std::string output = "test";
+    std::string output = func.solve(input);
     QString out = QString::fromStdString(output);
     ui->in_out_window->setText(out);
 }
+
 
 void MainWindow::move_left()
 {
@@ -189,4 +195,22 @@ void MainWindow::add_e()
 {
     ui->in_out_window->insert("e");
 }
+
+void MainWindow::add_fact()
+{
+    ui->in_out_window->insert(" ! ");
+}
+
+void MainWindow::help_me()
+{
+    //please?
+}
+
+void MainWindow::KeyPressEvent(QKeyEvent *event){
+    add_e();
+    if(event->key() == Qt::Key_U){
+        add_e();
+    }
+}
+
 

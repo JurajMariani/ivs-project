@@ -7,7 +7,7 @@
 //
 
 /**/
-#include "hfunc_lib.h"
+#include "../Header Files/hfunc_lib.h"
 
 #include <string>
 #include <iostream>
@@ -15,7 +15,23 @@
 #include <regex>
 
 using namespace std;
+/*
+string Higher_Func::ReDot(string input){
+    for(int i = 0;i<input.size();i++){
+        if(input.at(i)=='.')
+            input[i]=',';
+    }
+    return input;
+}
 
+string Higher_Func::Dot(string input){
+    for(int i = 0;i<input.size();i++){
+        if(input.at(i)==',')
+            input[i]='.';
+    }
+    return input;
+}
+*/
 //Input string, output the list of elements divided by spaces
 vector<string> Higher_Func::SplitString(string wString){
     vector<string> saveTo;
@@ -58,12 +74,13 @@ double Higher_Func::GetNumber(string number){
         return ans;
     }else
     if(number.compare("pi")==0){
-        return pi;
+        return PI;
     }else
     if(number.compare("e")==0){
-        return e;
+        return E;
     }
     else{
+        //cout<<atof("2,5")<<endl;
         return stod(number);
     }
 }
@@ -141,10 +158,9 @@ double Higher_Func::DoOperation(string operation,double operandA, double operand
 
 //Does the format thingy
 string FormatString(string input){
-    regex dot (".");
     int tearC = 0;
     for (int i = (input.size()-1);i>=0;i--){
-        if(input.at(i)=='.'){
+        if(input.at(i)=='.' || input.at(i)==','){
             tearC++;
             break;
         }
@@ -280,8 +296,11 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
                     throw runtime_error("operation " + i_operation->str + " has an invalid operand");
                 operandB=GetNumber(i_operand->str);
                 try{
+                    //cout<<operandA<<" "<<operation<<" "<<operandB<<endl;
                     i_operand->str=to_string(DoOperation(operation,operandA,operandB));
                     //cout<<operation<<" results in "<<i_operand->str<<endl;
+                    //cout<<"begf"<<i_operand->str<<endl;
+                    //cout<<"af"<<DoOperation(operation,operandA,0.0)<<endl;
                 }
                 catch (runtime_error& error){
                     throw runtime_error(error.what());
@@ -307,11 +326,12 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
     if(listOfElements.size()==1){
         i_operand=listOfElements.begin();
         ans=GetNumber(i_operand->str);
+        //cout<<i_operand->str<<endl;
         if(i_operand->str.compare("pi")==0){
-            return to_string(pi);
+            return to_string(PI);
         }
         if(i_operand->str.compare("e")==0){
-            return to_string(e);
+            return to_string(E);
         }
         return FormatString(i_operand->str);
     }
@@ -320,6 +340,7 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
 }
 
 string Higher_Func::solve (string input){
+    //input=ReDot(input);
     vector<string> arrayOfElements = SplitString(input);
     //TODO max size
     //if (arrayOfElements.size()>maxSize){Error}
@@ -335,7 +356,7 @@ string Higher_Func::solve (string input){
     catch (runtime_error& error){
         result =  error.what();
     }
-
+    //result=Dot(result);
     return result;
 }
 

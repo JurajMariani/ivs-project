@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "../Header Files/hfunc_lib.h"
+#include <QWidget>
+#include <QtGui>
+#include <QKeyEvent>
 
 //Interface lib
 
@@ -9,13 +13,16 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow// public QWidget
 {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    Higher_Func func;
+    void KeyPressEvent(QKeyEvent *event);
 
 public slots:
     void add_0();
@@ -42,15 +49,20 @@ public slots:
     void add_power();
     void add_root();
     void add_log();
+    void add_fact();
 
     void move_left();
     void move_right();
     void fdel();
     void ac();
 
-    void solve();
+    void solveU();
 
+    void help_me();
 private:
     Ui::MainWindow *ui;
 };
+
+
 #endif // MAINWINDOW_H
+
