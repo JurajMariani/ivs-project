@@ -12,7 +12,7 @@
 /**/
 
 #include <iostream>
-#include "math_lib.h"
+#include "../Header Files/math_lib.h"
 
 double add (double x, double y)
 {

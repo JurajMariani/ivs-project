@@ -28,17 +28,25 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 if(ANDROID)
   add_library(testGi SHARED
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    ../Source\ Files/main.cpp
+    ./Source\ Files/hFunc.cpp
+    ./Source\ Files/math_lib.cpp
+    ./Source\ Files/mainwindow.cpp
+    ./Header\ Files/mainwindow.h
+    ./Header\ Files/hfunc_lib.h
+    ./Header\ Files/math_lib.h
+    ./mainwindow.ui
   )
 else()
   add_executable(testGi
-    ./Source\ Files/main.cpp
-    ./Source\ Files/mainwindow.cpp
-    ./Header\ Files/mainwindow.h
-    ./mainwindow.ui
+      ./Source\ Files/main.cpp
+      ./Source\ Files/hFunc.cpp
+      ./Source\ Files/math_lib.cpp
+      ./Source\ Files/mainwindow.cpp
+      ./Header\ Files/mainwindow.h
+      ./Header\ Files/hfunc_lib.h
+      ./Header\ Files/math_lib.h
+      ./mainwindow.ui
   )
 endif()
 
