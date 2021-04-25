@@ -1,16 +1,25 @@
+/**
+ * @file math_tests.cpp
+ * @brief Tests for the math library 'math_lib.h'
+ *
+ * @author Lukas Macejka (xmacej03)
+ * Team: QWERTZ
+ */
+
+
 #include <stdexcept>
 #include <iostream>
 #include "math_lib.h"
 
-//
 
-//
-
-//
-
-//
 unsigned short count_overall = 0;
 
+
+/**
+ * Add_test Function
+ * @brief Tests for the 'add()' function
+ * Collection of various tests for said function from math library
+ */
 void add_test()
 {
 	unsigned short count = 0;
@@ -72,6 +81,13 @@ void add_test()
 	count_overall += count;
 
 }
+
+
+/**
+ * Sub_test Function
+ * @brief Tests for the 'sub()' function
+ * Collection of various tests for said function from math library
+ */
 void sub_test()
 {
 	unsigned short count = 0;
@@ -138,6 +154,13 @@ void sub_test()
 	std::cout << "SUB TEST COMPLETE\n";
 	count_overall += count;
 }
+
+
+/**
+ * Mul_test Function
+ * @brief Tests for the 'mul()' function
+ * Collection of various tests for said function from math library
+ */
 void mul_test()
 {
 	unsigned short count = 0;
@@ -206,6 +229,13 @@ void mul_test()
 	count_overall += count;
 
 }
+
+
+/**
+ * Div_test Function
+ * @brief Tests for the 'div()' function
+ * Collection of various tests for said function from math library
+ */
 void div_test()
 {
 	
@@ -302,6 +332,12 @@ void div_test()
 	count_overall += count;
 }
 
+
+/**
+ * Fact_test Function
+ * @brief Tests for the 'fact()' function
+ * Collection of various tests for said function from math library
+ */
 void fact_test()
 {
 	unsigned short count = 0;
@@ -370,6 +406,13 @@ void fact_test()
 	count_overall += count;
 
 }
+
+
+/**
+ * Power_test Function
+ * @brief Tests for the 'power()' function
+ * Collection of various tests for said function from math library
+ */
  void power_test()
 {
 	unsigned short count = 0;
@@ -445,6 +488,13 @@ void fact_test()
 	count_overall += count;
 
 }
+
+
+/**
+ * N-th Root test Function
+ * @brief Tests for the 'nqrt()' function
+ * Collection of various tests for said function from math library
+ */
 void nqrt_test()
 {
 	unsigned short count = 0;
@@ -511,6 +561,13 @@ void nqrt_test()
 	count_overall += count;
 
 }
+
+
+/**
+ * Log_test Function
+ * @brief Tests for the 'log()' function
+ * Collection of various tests for said function from math library
+ */
 void log_test()
 {
 	unsigned short count = 0;
@@ -575,6 +632,13 @@ void log_test()
 
 	count_overall += count;
 }
+
+
+/**
+ * Main Function
+ * @brief Test suite for math library
+ * Executes test collections for each function from math library
+ */
 int main()
 {
 

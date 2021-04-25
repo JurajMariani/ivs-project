@@ -1,12 +1,12 @@
-//
-//
-//
-//
-//
-//
-//
+/**
+ * @file hfunc_lib.h
+ * @brief Declaration of 'higher functions' over a 'Higher_Function' class
+ *
+ * @author Tomas Lukac (xlukac16)
+ * Team: QWERTZ
+ */
 
-/**/
+
 #include "../Header Files/hfunc_lib.h"
 
 #include <string>
@@ -32,7 +32,16 @@ string Higher_Func::Dot(string input){
     return input;
 }
 */
+
 //Input string, output the list of elements divided by spaces
+
+/**
+ * Split string Function
+ * @brief Function takes the string and divides it by space character, saves to vector
+ *
+ * @param wString String that gets divided
+ * @return The divided string in vector
+ */
 vector<string> Higher_Func::SplitString(string wString){
     vector<string> saveTo;
     string element = "";
@@ -56,18 +65,43 @@ vector<string> Higher_Func::SplitString(string wString){
 }
 
 //Checks if string is a number
+
+/**
+ * Is Number Function
+ * @brief Checks if the parameter is a number
+ *
+ * @param gElement The string that is tested for integers
+ * @return (true) - Number, (false) - Not a Number
+ */
 bool Higher_Func::IsNumber(string gElement){
     regex number ("-?(pi)|(e)|(ans)|-?([0-9]+(\\.[0-9]+)?)");
     return regex_match(gElement,number);
 }
 
 //Checks if string is a number
+
+/**
+ * Is Operand Function
+ * @brief Checks whether parameter is any one of known operands
+ *
+ * @param gElement The string tested for operand
+ * @return (true) - Operand, (false) - Not an Operand
+ */
 bool Higher_Func::IsOperand(string gElement){
     regex sign ("(\\+)|(\\-)|(\\*)|(\\/)|(\\^)|(√)|(log)|(!)");
     return regex_match(gElement,sign);
 }
 
 //input string, return ans value if ans, or pi or e, converts string to double if not
+
+/**
+ * Get Number Function
+ * @brief takes the parameter string and converts it into a number
+ * If the string is 'ans', 'pi', or 'e', it ts substituted with the value
+ *
+ * @param number String containing the number
+ * @return The 'number' string as a double value
+ */
 double Higher_Func::GetNumber(string number){
     if (number.compare("ans")==0)
     {
@@ -86,6 +120,15 @@ double Higher_Func::GetNumber(string number){
 }
 
 //inputs operation and returns its importance in equation
+
+/**
+ * Assign Importance Function
+ * @brief Assigns importance of functions
+ * The importance determines the order of execution, the greater the number, the sooner is the operation going to be executed
+ *
+ * @param input String containing the operation
+ * @return The importance value assigned - 3 = MAX, 2 = MED, 1 = LOW
+ */
 int Higher_Func::AssignImportance(string input){
     if(input.compare("log")==0 || input.compare("√")==0||input.compare("!")==0||input.compare("^")==0){
         return 3;
@@ -100,6 +143,15 @@ int Higher_Func::AssignImportance(string input){
 }
 
 //Checks if all parameters are valid
+
+/**
+ * Check Validity Function
+ * @brief checks whether vector contains valid elements
+ * Valid elements are operations and numbers
+ *
+ * @param elements Vector of string values containing elements
+ * @return (-1) - ALL OK, (integer <0,size>) - Problem with element[return]
+ */
 int Higher_Func::CheckValidity(vector<string> elements){
     for (int i = 0;i<elements.size();i++){
         if (IsNumber(elements[i])){
@@ -113,6 +165,16 @@ int Higher_Func::CheckValidity(vector<string> elements){
     return -1;
 }
 
+
+/**
+ * Create Operation List Function
+ * @brief Function creates a linked-list from vector elements
+ * The order of operations is constructed with the assigned importance in mind, the MAX importance execute first, LOW importance executes last
+ * @see AssignImportance()
+ *
+ * @param elements Vector of operations and numbers
+ * @return Constructed Linked-list of execution order elements
+ */
 list<Higher_Func::element> Higher_Func::CreateOperationList(vector<string> elements){
     list<element> retList;
     for (int i = 0; i<elements.size();i++){
@@ -129,6 +191,17 @@ list<Higher_Func::element> Higher_Func::CreateOperationList(vector<string> eleme
 }
 
 //Recognizes and performs single operation,returns result
+
+/**
+ * Do Operation Function
+ * @brief Function executes one operation from linked list over two operands
+ * 
+ * @param operation String name/sign of the executing operation
+ * @param operandA 1st operand, number
+ * @param operandB 2nd operand, number value
+ *
+ * @return The result of the operation, double value
+ */
 double Higher_Func::DoOperation(string operation,double operandA, double operandB){
     double result=0.0;
     //cout<<"gothere"<<endl;
@@ -157,6 +230,15 @@ double Higher_Func::DoOperation(string operation,double operandA, double operand
 }
 
 //Does the format thingy
+
+/**
+ * Format String Function
+ * @brief Function thet gets rid of redundant symbols
+ * This function is used mainly to format string that is printed in the calculator, all math functions return double, so 2+2 = 4.00000. This function strips the unnecessary zeroes
+ *
+ * @param input The soon-to-be formatted string
+ * @return The formatted input string
+ */
 string FormatString(string input){
     int tearC = 0;
     for (int i = (input.size()-1);i>=0;i--){
@@ -216,6 +298,15 @@ $$$$$$$$$$$$@@@@"|"` |]$@@@@$$$$$$$@@|%$@@@@@@@$$$@$@$@$$$$$$$$$$$&$$$$$$$$$$$$$
 $$$$$@$$$$$$$$$$@|    |$$@@@@$$$$$$$@lll||%$MMM$T|l$$@@$$$$$$$@$$$||$$$$$$$$$$$$
 ...v mojej hlave to vypadalo lepsie...
 */
+
+/**
+ * Main Iteration Cycle Function
+ * @brief Function that cycles through the linked-list and executes operations
+ * The functions also redirects and handles possible exceptions from math library 'math_lib.h' and itself
+ *
+ * @param listOfElements Linked-list containing the ordered operations and operands
+ * @return The overall formatted result
+ */
 string Higher_Func::MainIterationCycle(list<element> listOfElements){
     list<element>::iterator i_operation = listOfElements.begin();
     list<element>::iterator i_operand = listOfElements.begin();
@@ -339,6 +430,14 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
         return "multiple things remain";
 }
 
+
+/**
+ * Solve Function
+ * @brief Executes functions from splitting the string to getting the final result
+ *
+ * @param input The input string from the calculator 'screen'
+ * @return The overall result that gets printed onto the calculator 'screen'
+ */
 string Higher_Func::solve (string input){
     //input=ReDot(input);
     vector<string> arrayOfElements = SplitString(input);
@@ -360,4 +459,4 @@ string Higher_Func::solve (string input){
     return result;
 }
 
-/*EndComment*/
+/*** END OF FILE hFunc.cpp*/

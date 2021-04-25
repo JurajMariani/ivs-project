@@ -1,3 +1,13 @@
+/**
+ * @file hfunc_tests.cpp
+ * @brief Tests for the library of highrt functions 'hfunc_lib.h'
+ *
+ * @author Lukas Macejka (xmacej03)
+ * Team: QWERTZ
+ */
+
+
+
 #include <stdexcept>
 #include <iostream>
 #include "hfunc_lib.h"
@@ -7,6 +17,11 @@ using namespace std;
 
 int owall_failed_test = 0;
 
+/**
+ * Solve Test Function
+ * @brief Tests for 'Higher_Func::solve' function
+ * Collection of tests for the 'solve' function form higher functions library
+ */
 void hfunc_test()
 {
 	Higher_Func func;
@@ -363,11 +378,15 @@ void hfunc_test()
 	if (owall_failed_test > 0)
 		std::cout << "RESULT:\t" << owall_failed_test << " tests failed.\n";
 	else
-		std::cout << "ALL TESTS WERE SekssESSFUL, YAY!\n";
+		std::cout << "ALL TESTS WERE SUCCESSFUL, YAY!\n";
 
 }
 
 
+/**
+ * Main Function
+ * @brief Executes the tests for 'Higher_Func::solve()' function
+ */
 int main()
 {
 	//Higher_Func::
