@@ -33,7 +33,8 @@ public:
     ~MainWindow(); /**< Window destructor */
 
     Higher_Func func; /**< Instance of 'Higher_Func' class */
-    void KeyPressEvent(QKeyEvent *event); /**< Event of KeyPress */ 
+    bool help=false; /** Help screen toggle */
+
 
 public slots:
     void add_0(); /**< Press button 0 */

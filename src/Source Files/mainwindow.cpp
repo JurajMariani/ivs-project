@@ -14,6 +14,7 @@
 #include <string>
 #include <iostream>
 #include <QKeyEvent>
+#include <QLabel>
 
 /**
  * Main Window Function
@@ -28,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->button_root->setText(QStringLiteral("n\u221A"));
     ui->button_pi->setText(QStringLiteral("\u03C0"));
+    ui->help_window->setVisible(false);
+
+    connect(ui->in_out_window, &QLineEdit::returnPressed ,this,&MainWindow::solveU);
 
     connect(ui->button_0, &QPushButton::clicked ,this,&MainWindow::add_0);
     connect(ui->button_1, &QPushButton::clicked ,this,&MainWindow::add_1);
@@ -90,6 +94,7 @@ void MainWindow::solveU()
     QString out = QString::fromStdString(output);
     ui->in_out_window->setText(out);
 }
+
 
 
 /**
@@ -360,19 +365,10 @@ void MainWindow::add_fact()
  */
 void MainWindow::help_me()
 {
-    //please?
-}
-
-
-/**
- * Key Press Event Function
- * @brief Press button event
- */
-void MainWindow::KeyPressEvent(QKeyEvent *event){
-    add_e();
-    if(event->key() == Qt::Key_U){
-        add_e();
+    if(help){
+        ui->help_window->setVisible(false);
+    }else{
+        ui->help_window->setVisible(true);
     }
+    help = !help;
 }
-
-
