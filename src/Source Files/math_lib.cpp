@@ -149,12 +149,14 @@ double nqrt (double x, double n)
 	long double x_prev = rand() % 10;
 
 	double diff = INT8_MAX;
+	double diff_prev = 0;
 	long double x_i = x;
 
-	while ( diff > EPS )
+	while (( diff > EPS ) && ( abs_v(diff - diff_prev) > 0 + EPS ))
 	{
 	
 		x_i = ( ( ((long)n - 1.0) * x_prev ) + ( x / power(x_prev, (long)n-1) ) ) / n ;
+		diff_prev = diff;
 		diff = abs_v(x_i - x_prev);
 		x_prev = x_i;
 	
