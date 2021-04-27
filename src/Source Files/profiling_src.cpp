@@ -37,8 +37,7 @@ long double sum( std::vector<double> *values )
 	LOG("\tIn 'sum()' function, Iterating ...");
 	while (i < values->end())
 	{
-		out += *i;
-		
+		out = add( out, *i );
 		i++;
 	}
 
@@ -59,7 +58,7 @@ long double squared_sum( std::vector<double>* values, long double* sum_out )
 
 	while (i < values->end())
 	{
-		out += power( *i, 2 );
+		out = add( out, power( *i, 2));
 
 		i++;
 	}

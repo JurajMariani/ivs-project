@@ -1,0 +1,5 @@
+
+xmaria03 100 (Initialize project in C++, Program documentation in Doxygen, Create Makefile, Implementation of math library, Profiling)
+xmacej03 98  (Create tests for math library, Create test for "Higher Functions" library)
+xlukac16 100 (Project plan, Mockup GUI, GUI interface, Link GUI with math library, Implementation of "Higher Functions" library)
+xhoril01 100 (User documentation, Create README file, Application un/installer)

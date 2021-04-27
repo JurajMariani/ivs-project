@@ -1,0 +1,22 @@
+The output.pdf file contains the profiler outputs of our program calculating the standard deviation.
+The program was executed and fed with 10, 100 and 1000 random values.
+
+The program spends the most time executing functions:
+	power():
+		called: n + 1 times OVERALL
+	squared_sum():
+		custom function of profiling code
+		power() function is called here n times
+		called: 1 time
+	sum():
+		custom function of profiling code
+		add() is executed here, it has little efect on overall execution time though
+		called: 1 time
+	nqrt():
+		called: 1 time
+		has long execution time, it is called only once though => impact on low amount of input values
+
+In the future we should focus on improvimg the power() function and mabe optimize the nqrt() function.
+
+Profiler used: Callgrind
+Interface: Kcachegrind

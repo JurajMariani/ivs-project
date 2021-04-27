@@ -1,0 +1,11 @@
+
+
+
+# Object files
+*.o
+
+# Doxygen generated files
+src/doxygen_output
+
+# CMake files
+src/CMake
