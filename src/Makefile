@@ -8,19 +8,22 @@
 
 DESTDIR= $(HOME)
 INSLFAGS= -m 0755
-testGi=testGi
+testGi= Calculario
 
 TESTM_PATH = ./Test\ Files/Math\ Lib\ Test/
 TESTH_PATH = ./Test\ Files/HFunc\ Test/
 CMAKE_DIR = ./CMake/
+PROFILE_DIR = ../profiling/
+TEST_ANALYSIS = ./Test\ Files/
 
 all: build test install clean
 
 .PHONY: build pack clean test doc run profile install
 
 
-profile:
-	#TBA
+profile:	
+	$(MAKE) ref_output -C $(PROFILE_DIR)
+
 
 doc: Doxyfile
 	doxygen $^
@@ -31,13 +34,14 @@ pack:
 test:
 	$(MAKE) -C $(TESTM_PATH)
 	$(TESTM_PATH)math_test > $(TESTM_PATH)res.txt
-	# TODO analyze result
-	rm $(TESTM_PATH)math_test
-	rm $(TESTM_PATH)res.txt
-	
 	$(MAKE) -C $(TESTH_PATH)
 	$(TESTH_PATH)hfunc_test > $(TESTH_PATH)res.txt
-	# TODO analyze result
+	#------------------------------------------------------------------
+	# Test analysis
+	cd $(TEST_ANALYSIS) ; chmod 777 test_proof.sh ; ./test_proof.sh
+	#------------------------------------------------------------------
+	rm $(TESTM_PATH)math_test
+	rm $(TESTM_PATH)res.txt
 	rm $(TESTH_PATH)hfunc_test
 	rm $(TESTH_PATH)res.txt
 
@@ -53,9 +57,10 @@ build:
 	cd CMake/; cmake ../
 	$(MAKE) -C ./CMake
 	cd CMake/; mv testGi ../
+	mv testGi Calculario
 
 run:
-	./testGi #Temporary Name
+	./Calculario
 
 install: $(testGi)
 	mkdir -p $(DESTDIR)/usr/bin
