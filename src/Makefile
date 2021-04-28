@@ -15,6 +15,18 @@ TESTH_PATH = ./Test\ Files/HFunc\ Test/
 CMAKE_DIR = ./CMake/
 PROFILE_DIR = ../profiling/
 TEST_ANALYSIS = ./Test\ Files/
+PACK_NAME = xmaria03_xmacej03_xlukac16_xhoril01
+PACK_ARCH = $(PACK_DIR)/$(PACK_NAME).zip
+PACK_DIR = ../../$(PACK_NAME)
+PACK_DOC = $(PACK_DIR)/doc
+PACK_INS = $(PACK_DIR)/install
+PACK_REP = $(PACK_DIR)/repo
+DOXY_OUT = ./doxygen_output
+
+# This Makefile depends on:
+# 	* Doxygen: sudo apt-get install doxygen
+# 	* zip: sudo apt-get install zip
+# 	* CMake: sudo apt-get -y install cmake
 
 all: build test install clean
 
@@ -28,8 +40,23 @@ profile:
 doc: Doxyfile
 	doxygen $^
 
-pack:
-	#TBA
+pack: doc install
+	if [ -d $(PACK_DIR) ]; then rm -r $(PACK_DIR) ; fi
+	mkdir $(PACK_DIR)
+	
+	mkdir $(PACK_DOC)
+	cp -r $(DOXY_OUT) $(PACK_DOC)
+	
+	mkdir $(PACK_INS)
+	# cp xxxx.deb $(PACK_INS)
+	
+	mkdir $(PACK_REP)
+	make clean
+	cp -r ../ $(PACK_REP)
+	
+	cd $(PACK_DIR); cd .. ; zip -r $(PACK_NAME).zip $(PACK_NAME)/
+	rm -rf $(PACK_DIR)
+
 
 test:
 	$(MAKE) -C $(TESTM_PATH)
@@ -74,5 +101,6 @@ clean:
 	rm $(CMAKE_DIR)CMakeCache.txt -f
 	$(MAKE) clean -C $(TESTM_PATH)
 	$(MAKE) clean -C $(TESTH_PATH)
+	rm -r $(DOXY_OUT)
 
 
