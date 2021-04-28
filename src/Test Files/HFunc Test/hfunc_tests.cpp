@@ -272,11 +272,9 @@ void hfunc_test()
 			cout <<	test_numb << " input: " << test_string << " output: " << real_output << " exp_output: " << expect_output << endl; 
 		}
 
-	//Toto ma fungovat?
-	//Lebo Juro to aktivne blokuje
 	test_numb++;
-	test_string = "2 ^ -3";
-	expect_output = "0.125";
+	test_string = "2 ^ 13";
+	expect_output = "8192";
 	real_output = func.solve(test_string);
 	if (real_output != expect_output) 
 		{
@@ -317,7 +315,7 @@ void hfunc_test()
 	//toto zaokruhluje tebe
 	test_numb++;
 	test_string = "852 * 5517 ^ 2 / 2 √ 1000000 ";
-	expect_output = "25932570.23";
+	expect_output = "25932570.228";
 	real_output = func.solve(test_string);
 	if (real_output != expect_output) 
 		{
@@ -348,7 +346,7 @@ void hfunc_test()
 
 	test_numb++;
 	test_string = "pi";
-	expect_output = "3.1415926535897932";
+	expect_output = "3.141593";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
 		{
@@ -358,7 +356,7 @@ void hfunc_test()
 	
 	test_numb++;
 	test_string = "e";
-	expect_output = "2.7182818284590452";
+	expect_output = "2.718282";
 	real_output = func.solve (test_string);
 	if (real_output != expect_output) 
 		{
