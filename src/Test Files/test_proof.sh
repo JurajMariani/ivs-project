@@ -33,9 +33,9 @@ done < $file_name
 
 cd ..
 
-if [[ buffer_mathl =~ YAY! ]]
+if [[ $buffer_mathl =~ YAY! ]]
 then
-	ok=$((ok + 1))
+	ok=$((ok+1))
 fi
 
 #----------------------
@@ -50,9 +50,9 @@ done < $file_name
 
 cd ..
 
-if [[ buffer_mathl =~ YAY! ]]
+if [[ $buffer_hfunc =~ YAY! ]]
 then    
-        ok=$((ok + 1))
+        ok=$((ok+1))
 fi
 
 #----------------------

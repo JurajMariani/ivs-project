@@ -1,0 +1,17 @@
+
+
+/***********************************************************
+ * Team: QWERTZ
+ ***********************************************************
+ */
+
+
+Expectation vs Reality:
+	* Tasks that seemed easy prooved to be a lot harder, eg. un/installer, GUI using QT
+	
+	* Parallel development of tests and math/hfunc implementation
+
+Overall, we were successful in implementing everything we claimed we would and we managed to hold the deadlines and push to the repo in time.
+
+
+	-Team QWERTZ.
