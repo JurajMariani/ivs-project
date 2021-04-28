@@ -20,7 +20,16 @@ LICENCE
 ------------
 
 The program is distributed under a GNU General Public License v3.0
-------------------------------------------------------------------
+
+INTRODUCTION
+------------
+
+Allows user to use brand new non-commercial calculator for home usage
+
+INSTALLATION & USAGE
+--------------------
+
+This program requires installation. For more please read dokumentace.pdf 
 
 
-...
+
