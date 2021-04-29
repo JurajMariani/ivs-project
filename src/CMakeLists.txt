@@ -35,7 +35,7 @@ if(ANDROID)
     ./Header\ Files/mainwindow.h
     ./Header\ Files/hfunc_lib.h
     ./Header\ Files/math_lib.h
-    ./mainwindow.ui
+    ./res.qrc
   )
 else()
   add_executable(testGi
@@ -47,6 +47,7 @@ else()
       ./Header\ Files/hfunc_lib.h
       ./Header\ Files/math_lib.h
       ./mainwindow.ui
+      ./res.qrc
   )
 endif()
 
