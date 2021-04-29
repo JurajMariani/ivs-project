@@ -82,7 +82,10 @@ double div (double x, double y)
 double fact (double x)
 {
 	if ((x > (int)x + EPS) || (x < (int)x - EPS))
-		throw std::runtime_error("Factorial can only be done form an integer");
+		throw std::runtime_error("Factorial can only be done from an integer");
+
+	if (0 > (int)x)
+		throw std::runtime_error("Factorial can only be done from a positive number");
 
 	double out = 1.0;
 	for (int i = (int)x ; i > 0 ; i--)

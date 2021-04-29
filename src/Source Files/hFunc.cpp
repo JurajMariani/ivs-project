@@ -13,8 +13,10 @@
 #include <iostream>
 #include <vector>
 #include <regex>
+#include <clocale>
 
 using namespace std;
+
 /*
 string Higher_Func::ReDot(string input){
     for(int i = 0;i<input.size();i++){
@@ -114,7 +116,7 @@ double Higher_Func::GetNumber(string number){
         return E;
     }
     else{
-        //cout<<atof("2,5")<<endl;
+        std::setlocale(LC_NUMERIC,"C");
         return stod(number);
     }
 }
@@ -204,7 +206,7 @@ list<Higher_Func::element> Higher_Func::CreateOperationList(vector<string> eleme
  */
 double Higher_Func::DoOperation(string operation,double operandA, double operandB){
     double result=0.0;
-    //cout<<"gothere"<<endl;
+    //cout<<operation<<" "<<operandA<<" "<<operandB<<endl;
     try{
     if (operation.compare("+")==0)
         result= add(operandA,operandB);
@@ -417,7 +419,6 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
     if(listOfElements.size()==1){
         i_operand=listOfElements.begin();
         ans=GetNumber(i_operand->str);
-        //cout<<i_operand->str<<endl;
         if(i_operand->str.compare("pi")==0){
             return to_string(PI);
         }
@@ -441,8 +442,6 @@ string Higher_Func::MainIterationCycle(list<element> listOfElements){
 string Higher_Func::solve (string input){
     //input=ReDot(input);
     vector<string> arrayOfElements = SplitString(input);
-    //TODO max size
-    //if (arrayOfElements.size()>maxSize){Error}
     int flag = CheckValidity(arrayOfElements);
     if (flag != -1 ){
         return "Invalid input: " + arrayOfElements[flag];
