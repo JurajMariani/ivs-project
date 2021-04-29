@@ -86,7 +86,7 @@ build:
 	cd CMake/; mv testGi ../
 	mv testGi Calculario
 
-run:
+run: build
 	./Calculario
 
 install: $(testGi) build

@@ -81,7 +81,7 @@ double div (double x, double y)
  */
 double fact (double x)
 {
-	if ((x > (int)x + EPS) || (x < (int)x - EPS) || (x < 0 + EPS))
+	if ((x > (int)x + EPS) || (x < (int)x - EPS))
 		throw std::runtime_error("Factorial can only be done from a positive integer");
 
 	if (0 > (int)x)
