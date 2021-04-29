@@ -84,29 +84,28 @@ double nqrt (double x, double n);
 
 
 /**
- * Logarithm function part 1
+ * Square root function
+ * @brief Sqrt function desperately needed by the Logarithm function.
+ *
+ * @param val The base value
+ * @return The square root of val
+ */
+long double sqrt_x (long double val);
+
+
+/**
+ * Logarithm function
  * @brief Is executed by 'log()' function if base is greater than 1
  *
- * @param base Base of the logarithm
  * @param x Logarithmized value
- * @return Returns the base-based logarithm of x -> log [base] (x)
+ * @return Returns the 10-based logarithm of x -> log [10] (x)
  */
-double log_gt_one (double base, double x);
+double log_ten (double x);
 
 
 /**
- * Logarithm function part 2
- * @brief Is executed by 'log()' function if base is lesser than 1 or is equal to constant e
- *
- * @param x Logarithmized value
- * @return Returns the natural logarithm of x -> ln [e] (x)
- */
-double ln (double x);
-
-
-/**
- * Logarithm function part 3
- * @brief Depending on the input, executes the 'ln()' function or 'log_gt_one()' function
+ * Logarithm function executer
+ * @brief Executes the logarithm function over the value and base
  *
  * @param base Base ot the logarithm
  * @param x Logarithmized value
