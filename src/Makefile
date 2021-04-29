@@ -48,7 +48,7 @@ pack: doc install
 	cp -r $(DOXY_OUT) $(PACK_DOC)
 	
 	mkdir $(PACK_INS)
-	# cp xxxx.deb $(PACK_INS)
+	# cp ../calculario_2.0_amd64.deb $(PACK_INS)
 	
 	mkdir $(PACK_REP)
 	make clean
@@ -89,7 +89,7 @@ build:
 run:
 	./Calculario
 
-install: $(testGi)
+install: $(testGi) build
 	mkdir -p $(DESTDIR)/usr/bin
 	install $(INSFLAGS) $(testGi) $(DESTDIR)/usr/bin/
 
