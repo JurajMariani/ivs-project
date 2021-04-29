@@ -48,7 +48,7 @@ pack: doc install
 	cp -r $(DOXY_OUT) $(PACK_DOC)
 	
 	mkdir $(PACK_INS)
-	# cp ../calculario_2.0_amd64.deb $(PACK_INS)
+	cp ../calculario_2.0_amd64.deb $(PACK_INS)
 	
 	mkdir $(PACK_REP)
 	make clean
