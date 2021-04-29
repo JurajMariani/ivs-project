@@ -101,6 +101,6 @@ clean:
 	rm $(CMAKE_DIR)CMakeCache.txt -f
 	$(MAKE) clean -C $(TESTM_PATH)
 	$(MAKE) clean -C $(TESTH_PATH)
-	rm -r $(DOXY_OUT)
+	rm -r $(DOXY_OUT) -f
 
 
